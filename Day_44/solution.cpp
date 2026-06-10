@@ -20,13 +20,17 @@ int main() {
         cin >> n;
         
         bool found = false;
+        long long limit = min(n, 10000000000LL);
     
-        for (long long b = 0; b <= n && b <= 12000000LL; b += 12) {
-            long long a = n - b;
+      
+        for (long long a = 0; a <= limit; a++) {
             if (is_palindrome(a)) {
-                cout << a << " " << b << "\n";
-                found = true;
-                break;
+                long long b = n - a;
+                if (b >= 0 && b % 12 == 0) {
+                    cout << a << " " << b << "\n";
+                    found = true;
+                    break;
+                }
             }
         }
         
